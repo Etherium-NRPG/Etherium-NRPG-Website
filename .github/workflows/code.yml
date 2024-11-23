@@ -23,7 +23,7 @@ jobs:
               uses: actions/setup-java@v2
               with:
                 java-version: '17'
-                distribution: 'adoptopenjdk'
+                distribution: 'adoptium'
             
             - name: Cache SonarCloud dependencies
               uses: actions/cache@v2
@@ -32,7 +32,7 @@ jobs:
                 key: ${{ runner.os }}-sonar-${{ hashFiles('**/*.java') }}
             
             - name: Build with Maven
-              run: mvn clean install
+              run: ./mvnw clean install
             
             - name: SonarCloud Scan
               uses: SonarSource/sonarcloud-github-action@v1
